@@ -16,7 +16,7 @@ export default function Characters() {
 
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  // Track when filters should be applied
+
   const [filterTrigger, setFilterTrigger] = useState(0);
 
   const getChar = async () => {
@@ -43,19 +43,19 @@ export default function Characters() {
 
   const applyFilters = () => {
     setPage(1);
-    // Increment the filter trigger to cause a re-fetch
+
     setFilterTrigger((prev) => prev + 1);
   };
   const clearFilters = () => {
     setSearchName("");
     setStatus("");
     setGender("");
-    setPage(1); // reset to first page
+    setPage(1);
     applyFilters();
   };
   useEffect(() => {
     getChar();
-  }, [page, filterTrigger]); // Add filterTrigger as a dependency
+  }, [page, filterTrigger]);
 
   return (
     <>
