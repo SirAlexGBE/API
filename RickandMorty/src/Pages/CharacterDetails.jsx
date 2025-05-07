@@ -142,10 +142,10 @@ const CharacterDetails = () => {
                     <h2 className="text-yellow-400 font-semibold">Origin</h2>
                     <p className="text-blue-200">{character.origin?.name}</p>
                     {character.origin?.url && (
-                      <a href={character.origin.url} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 text-sm inline-flex items-center mt-1 transition-colors">
-                        <span>View origin details</span>
+                      <Link to={`/location/${character.origin?.url?.split("/").pop()}`} className="text-green-400 hover:text-green-300 text-sm inline-flex items-center mt-1 transition-colors">
+                        <span>View origin location</span>
                         <span className="ml-1">→</span>
-                      </a>
+                      </Link>
                     )}
                   </div>
 
@@ -153,15 +153,10 @@ const CharacterDetails = () => {
                     <h2 className="text-yellow-400 font-semibold">Current Location</h2>
                     <p className="text-blue-200">{character.location?.name}</p>
                     {character.location?.url && (
-                      <a
-                        href={character.location.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-green-400 hover:text-green-300 text-sm inline-flex items-center mt-1 transition-colors"
-                      >
+                      <Link to={`/location/${character.location?.url?.split("/").pop()}`} className="text-green-400 hover:text-green-300 text-sm inline-flex items-center mt-1 transition-colors">
                         <span>View location details</span>
                         <span className="ml-1">→</span>
-                      </a>
+                      </Link>
                     )}
                   </div>
                 </div>
