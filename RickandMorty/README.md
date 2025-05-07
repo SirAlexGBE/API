@@ -1,6 +1,3 @@
-Here's a simple and professional `README.md` file tailored for your **Rick and Morty** project:
-
-````markdown
 # Rick and Morty 🛸
 
 A fun practice project built with [Vite](https://vitejs.dev/), [React](https://reactjs.org/), and [Tailwind CSS v4](https://tailwindcss.com/) that fetches data from a free Rick and Morty API. This
@@ -29,6 +26,7 @@ project was created to sharpen my skills in working with APIs and implementing R
    git clone https://github.com/SirAlexGBE/API.git
    cd rick-and-morty
    ```
+
 ````
 
 2. Install dependencies:
@@ -58,3 +56,4 @@ This project is for educational purposes.
 ---
 
 Made with ❤️ by Alex Kandel
+````
