@@ -3,6 +3,7 @@ import axios from "axios";
 import LocationCard from "../Components/LocationCard";
 import {useNavigate} from "react-router";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
+import NavigateHome from "../Components/NavigateHome";
 
 export default function Locations() {
   const navigate = useNavigate();
@@ -40,12 +41,6 @@ export default function Locations() {
           backgroundColor: "rgba(0, 0, 0, 0.8)",
         }}
       >
-        <div className="max-w-4xl mx-auto absolute top-2 left-2">
-          <button onClick={() => navigate(-1)} className="text-green-400 hover:text-green-300 mb-6 flex items-center group">
-            <span className="inline-block transform group-hover:-translate-x-1 transition-transform">&larr;</span>
-            <span className="ml-2">Go Back</span>
-          </button>
-        </div>
         <h2
           className="text-2xl font-bold mb-6 text-center text-green-400"
           style={{
@@ -54,6 +49,15 @@ export default function Locations() {
         >
           Let's Know Rick and Morty's locations
         </h2>
+        <div className="max-w-4xl mx-auto">
+          <div className="flex flex-row justify-between items-center px-4">
+            <button onClick={() => navigate(-1)} className="text-green-400 hover:text-green-300 mb-6 flex items-center group">
+              <span className="inline-block transform group-hover:-translate-x-1 transition-transform">&larr;</span>
+              <span className="ml-2">Go Back</span>
+            </button>
+            <NavigateHome />
+          </div>
+        </div>
 
         {loading ? (
           <div className="flex justify-center items-center h-64">

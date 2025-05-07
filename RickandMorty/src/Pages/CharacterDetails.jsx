@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useParams, Link} from "react-router-dom";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import NavigateHome from "../Components/NavigateHome";
 
 const baseUrl = import.meta.env.VITE_API;
 
@@ -93,11 +94,13 @@ const CharacterDetails = () => {
       <div className="fixed inset-0 bg-green-500 opacity-10 rounded-full blur-3xl w-3/4 h-3/4 mx-auto my-auto -z-10"></div>
 
       <div className="max-w-4xl mx-auto">
-        <button onClick={() => navigate(-1)} className="text-green-400 hover:text-green-300 mb-6 flex items-center group">
-          <span className="inline-block transform group-hover:-translate-x-1 transition-transform">&larr;</span>
-          <span className="ml-2">Go Back</span>
-        </button>
-
+        <div className="flex flex-row justify-between items-center px-4">
+          <button onClick={() => navigate(-1)} className="text-green-400 hover:text-green-300 mb-6 flex items-center group">
+            <span className="inline-block transform group-hover:-translate-x-1 transition-transform">&larr;</span>
+            <span className="ml-2">Go Back</span>
+          </button>
+          <NavigateHome />
+        </div>
         <div className="bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl shadow-2xl shadow-green-500/20 p-6 border border-green-500/20 overflow-hidden">
           <div className="flex flex-col md:flex-row gap-8">
             {/* Character Image */}
