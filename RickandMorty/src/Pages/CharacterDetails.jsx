@@ -172,13 +172,15 @@ const CharacterDetails = () => {
               {character.episode?.map((ep, index) => {
                 const episodeNumber = ep.split("/").pop();
                 return (
-                  <span
-                    key={index}
-                    className="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-sm border border-blue-500/30 
+                  <Link key={index} to={`/episode/${episodeNumber}`} className="bg-gray-800 hover:bg-gray-700 rounded-xl overflow-hidden transition transform hover:scale-105">
+                    <span
+                      key={index}
+                      className="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-sm border border-blue-500/30 
                    hover:bg-blue-800/50 hover:scale-105 transition-transform duration-200 ease-in-out"
-                  >
-                    Episode {episodeNumber}
-                  </span>
+                    >
+                      Episode {episodeNumber}
+                    </span>
+                  </Link>
                 );
               })}
             </div>
