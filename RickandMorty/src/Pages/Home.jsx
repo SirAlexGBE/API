@@ -96,7 +96,7 @@ export default function Home() {
       </main>
 
       <footer className="text-center py-8 text-gray-400">
-        <p>© 2025 Rick and Morty Multiverse Explorer</p>
+        <p> Rick and Morty Multiverse Explorer Developed By Alex</p>
       </footer>
     </div>
   );
