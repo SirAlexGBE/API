@@ -2,17 +2,21 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import LocationCard from "../Components/LocationCard";
 import {useNavigate} from "react-router";
+import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
+
 export default function Locations() {
   const navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_API;
   const [location, setlocation] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [info, setInfo] = useState({});
+  const [page, setPage] = useState(1);
   const getlocation = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${baseUrl}/location`);
+      const res = await axios.get(`${baseUrl}/location?page=${page}`);
       setlocation(res.data.results);
-      console.log(res.data.results);
+      setInfo(res.data.info);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching locations:", error);
@@ -22,7 +26,7 @@ export default function Locations() {
 
   useEffect(() => {
     getlocation();
-  }, []);
+  }, [page]);
   return (
     <>
       <div
@@ -64,6 +68,27 @@ export default function Locations() {
             ))}
           </div>
         )}
+      </div>
+      <div className="flex justify-center mt-6 space-x-6 items-center">
+        <button
+          onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+          disabled={page === 1}
+          className={`p-3 rounded-full bg-green-500 text-white hover:bg-green-600 transition ${page === 1 ? "opacity-50 cursor-not-allowed" : ""}`}
+          title="Previous Page"
+        >
+          <FaArrowLeft />
+        </button>
+
+        <span className="text-green-400 font-semibold text-lg">Page {page}</span>
+
+        <button
+          onClick={() => setPage((prev) => prev + 1)}
+          disabled={!info.next}
+          className={`p-3 rounded-full bg-green-500 text-white hover:bg-green-600 transition ${!info.next ? "opacity-50 cursor-not-allowed" : ""}`}
+          title="Next Page"
+        >
+          <FaArrowRight />
+        </button>
       </div>
     </>
   );
