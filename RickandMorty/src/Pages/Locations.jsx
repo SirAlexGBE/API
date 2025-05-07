@@ -1,26 +1,27 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import Card from "../Components/Card";
+import LocationCard from "../Components/LocationCard";
 import {useNavigate} from "react-router";
-export default function Characters() {
+export default function Locations() {
   const navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_API;
-  const [character, setCharacter] = useState([]);
+  const [location, setlocation] = useState([]);
   const [loading, setLoading] = useState(true);
-  const getChar = async () => {
+  const getlocation = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${baseUrl}/character`);
-      setCharacter(res.data.results);
+      const res = await axios.get(`${baseUrl}/location`);
+      setlocation(res.data.results);
+      console.log(res.data.results);
       setLoading(false);
     } catch (error) {
-      console.error("Error fetching characters:", error);
+      console.error("Error fetching locations:", error);
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    getChar();
+    getlocation();
   }, []);
   return (
     <>
@@ -47,7 +48,7 @@ export default function Characters() {
             textShadow: "0 0 10px rgba(74, 222, 128, 0.6)",
           }}
         >
-          Let's Know Rick and Morty's Characters
+          Let's Know Rick and Morty's locations
         </h2>
 
         {loading ? (
@@ -58,8 +59,8 @@ export default function Characters() {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-auto p-4">
-            {character.map((item, index) => (
-              <Card key={index} character={item} />
+            {location.map((item, index) => (
+              <LocationCard key={index} location={item} />
             ))}
           </div>
         )}

@@ -14,7 +14,7 @@ export default function Home() {
       className="max-h-screen overflow-hidden bg-black text-white"
       style={{
         backgroundImage: "url('https://m.media-amazon.com/images/M/MV5BNmZkZjVlZTEtZjlmMi00N2IxLWIyYmYtYzA2YTA2MWE5ODdkXkEyXkFqcGc@._V1_FMjpg_UX1200_.jpg')",
-        backgroundSize: "fit",
+        backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundBlendMode: "overlay",
@@ -87,7 +87,9 @@ export default function Home() {
               <p className="text-purple-200 mb-6">
                 Explore strange and dangerous locations throughout the multiverse - from the Citadel of Ricks to Blips and Chitz, and countless alien planets with mind-bending realities.
               </p>
-              <button className="bg-green-500 text-black py-2 px-6 rounded-full font-bold hover:bg-green-400 transition-colors">View Locations</button>
+              <Link to={"/locations"}>
+                <button className="bg-green-500 text-black py-2 px-6 rounded-full font-bold hover:bg-green-400 transition-colors">View Locations</button>
+              </Link>
             </div>
           </div>
         </div>
