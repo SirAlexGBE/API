@@ -1,13 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./home.css";
 import {useState} from "react";
 import {Globe, Users} from "lucide-react";
 import {Link} from "react-router-dom";
+import {AuthContext} from "../Context/AuthContext";
 
 export default function Home() {
   // State for card hover effects
   const [characterHover, setCharacterHover] = useState(false);
   const [locationHover, setLocationHover] = useState(false);
+  const {currentUser, logout} = useContext(AuthContext);
 
   return (
     <div

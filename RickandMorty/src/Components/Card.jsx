@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 const Card = ({character}) => {
   return (
     <Link to={`/character/${character.id}`}>
-      <div id={character.id} className="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white p-4 space-y-4 transition transform hover:scale-105">
+      <div id={character.id} className="max-w-sm rounded-2xl overflow-hidden shadow-lg bg-green-400 p-4 space-y-4 transition transform hover:scale-105">
         <img className="w-full rounded-xl" src={character.image} alt={character.name} />
         <div className="text-center">
           <h2 className="text-xl font-bold text-gray-800">{character.name}</h2>
