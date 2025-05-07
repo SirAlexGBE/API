@@ -27,7 +27,6 @@ const CharacterDetails = () => {
     fetchCharacter();
   }, [id]);
 
-  // Status badge color based on character status
   const getStatusColor = (status) => {
     switch (status?.toLowerCase()) {
       case "alive":
@@ -90,7 +89,7 @@ const CharacterDetails = () => {
         backgroundColor: "rgba(0, 0, 0, 0.8)",
       }}
     >
-      {/* Portal effect in background */}
+      {/* Portal effect */}
       <div className="fixed inset-0 bg-green-500 opacity-10 rounded-full blur-3xl w-3/4 h-3/4 mx-auto my-auto -z-10"></div>
 
       <div className="max-w-4xl mx-auto">

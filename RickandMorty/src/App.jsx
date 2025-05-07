@@ -8,6 +8,7 @@ import NotFound from "./Pages/NotFound";
 import Locations from "./Pages/Locations";
 import {AuthProvider} from "./Context/AuthContext";
 import AuthPage from "./Pages/AuthPage";
+import Episodes from "./Pages/Episodes";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/characters" element={<Characters />} />
           <Route path="/locations" element={<Locations />} />
+          <Route path="/episodes" element={<Episodes />} />
           <Route path="/character/:id" element={<CharacterDetails />} />
           <Route path="/location/:id" element={<LocationDetails />} />
         </Routes>
