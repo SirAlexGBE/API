@@ -27,8 +27,6 @@ project was created to sharpen my skills in working with APIs and implementing R
    cd rick-and-morty
    ```
 
-````
-
 2. Install dependencies:
 
    ```bash
@@ -56,4 +54,3 @@ This project is for educational purposes.
 ---
 
 Made with ❤️ by Alex Kandel
-````
