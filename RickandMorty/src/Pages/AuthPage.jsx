@@ -30,6 +30,16 @@ export default function AuthPage() {
       setUsers(JSON.parse(storedUsers));
     }
   }, []);
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    if (storedUser && storedUsers.some((u) => u.username === storedUser.username)) {
+      setCurrentUser(storedUser);
+    } else {
+      localStorage.removeItem("currentUser");
+    }
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({
