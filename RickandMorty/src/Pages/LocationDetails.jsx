@@ -10,6 +10,7 @@ const locationDetails = () => {
   const {id} = useParams();
   const [location, setlocation] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [residentNames, setResidentNames] = useState([]);
 
   useEffect(() => {
     const fetchlocation = async () => {
@@ -25,6 +26,28 @@ const locationDetails = () => {
 
     fetchlocation();
   }, [id]);
+
+  useEffect(() => {
+    if (!location || !location.residents || location.residents.length === 0) return;
+
+    const fetchResidents = async () => {
+      try {
+        const residentIds = location.residents.map((url) => url.split("/").pop());
+        const response = await axios.get(`${baseUrl}/character/${residentIds.join(",")}`);
+
+        const data = Array.isArray(response.data) ? response.data : [response.data];
+        const names = data.map((character) => ({
+          id: character.id,
+          name: character.name,
+        }));
+        setResidentNames(names);
+      } catch (error) {
+        console.error("Error fetching resident data:", error);
+      }
+    };
+
+    fetchResidents();
+  }, [location]);
 
   if (loading)
     return (
@@ -102,40 +125,35 @@ const locationDetails = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12">
                 <div className="space-y-3">
                   <div>
-                    <h2 className="text-yellow-400 font-semibold">Species</h2>
-                    <p className="text-blue-200">{location.species}</p>
+                    <h2 className="text-yellow-400 font-semibold">Type</h2>
+                    <p className="text-blue-200">{location.type}</p>
                   </div>
 
                   <div>
-                    <h2 className="text-yellow-400 font-semibold">Gender</h2>
-                    <p className="text-blue-200">{location.gender}</p>
+                    <h2 className="text-yellow-400 font-semibold">Dimension</h2>
+                    <p className="text-blue-200">{location.dimension}</p>
                   </div>
                 </div>
-
-                <div className="space-y-3">
-                  <div>
-                    <h2 className="text-yellow-400 font-semibold">Origin</h2>
-                    <p className="text-blue-200">{location.origin?.name}</p>
-                    {location.origin?.url && (
-                      <a href={location.origin.url} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 text-sm inline-flex items-center mt-1 transition-colors">
-                        <span>View origin details</span>
-                        <span className="ml-1">→</span>
-                      </a>
-                    )}
-                  </div>
-
-                  <div>
-                    <h2 className="text-yellow-400 font-semibold">Current Location</h2>
-                    <p className="text-blue-200">{location.location?.name}</p>
-                    {location.location?.url && (
-                      <a href={location.location.url} target="_blank" rel="noopener noreferrer" className="text-green-400 hover:text-green-300 text-sm inline-flex items-center mt-1 transition-colors">
-                        <span>View location details</span>
-                        <span className="ml-1">→</span>
-                      </a>
-                    )}
-                  </div>
+                <div>
+                  <h2 className="text-yellow-400 font-semibold">Creation </h2>
+                  <p className="text-blue-200">{location.created}</p>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="mt-8 pt-6 border-t border-blue-500/30">
+            <h2 className="text-2xl font-bold text-yellow-400 mb-4">Residents</h2>
+            <div className="flex flex-wrap gap-2">
+              {residentNames.map((resident, index) => (
+                <Link to={`/character/${resident.id}`} key={index}>
+                  <span
+                    className="bg-blue-900/50 text-blue-200 px-3 py-1 rounded-full text-sm border border-blue-500/30 
+                 hover:bg-blue-800/50 hover:scale-105 transition-transform duration-200 ease-in-out"
+                  >
+                    {resident.name}
+                  </span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
