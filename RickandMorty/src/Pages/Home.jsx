@@ -68,16 +68,16 @@ export default function Home() {
       {/* Portal glow */}
       <div className="absolute inset-0 bg-green-500 opacity-10 rounded-full blur-3xl w-3/4 h-3/4 m-auto"></div>
 
-      {/* Header with user info and logout */}
-      <header className="relative flex justify-between items-center pt-8 px-8 z-10">
-        <div className="text-center flex-1">
-          <h1 className="text-5xl font-bold text-green-400 mb-2">Rick and Morty Universe</h1>
-          <p className="text-xl text-blue-300">Explore the multiverse of characters and locations</p>
+      <header className="relative flex flex-col sm:flex-row justify-between items-center pt-8 px-4 sm:px-8 gap-4 sm:gap-0 z-10">
+        <div className="text-center sm:flex-1">
+          <h1 className="text-3xl sm:text-5xl font-bold text-green-400 mb-2">Rick and Morty Universe</h1>
+          <p className="text-base sm:text-xl text-blue-300">Explore the multiverse of characters and locations</p>
         </div>
-        <div className="flex items-center space-x-3">
-          <Users size={24} className="text-white" />
-          <span className="text-white">{currentUser?.username || currentUser?.email}</span>
-          <button onClick={logout} className="text-sm bg-red-600 hover:bg-red-500 text-white py-1 px-3 rounded-full transition-colors duration-200">
+
+        <div className="flex items-center justify-center sm:justify-end space-x-2 sm:space-x-3">
+          <Users size={20} className="text-white" />
+          <span className="text-sm sm:text-base text-white">{currentUser?.username || currentUser?.email}</span>
+          <button onClick={logout} className="text-xs sm:text-sm bg-red-600 hover:bg-red-500 text-white py-1 px-3 rounded-full transition-colors duration-200">
             Logout
           </button>
         </div>
